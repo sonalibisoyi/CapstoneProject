@@ -4,6 +4,8 @@ import openai
 import os
 import time
 
+from db_connection import get_inventory
+
 # Set the OpenAI API key
 openai.api_key = "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"
 
@@ -11,14 +13,49 @@ openai.api_key = "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"
 name = 'BOT'
 
 # Define the role of the bot
-role = 'customer service'
+role = 'inventory manager'
 
 # Define the impersonated role with instructions
-impersonated_role = f"""
-    From now on, you are going to act as {name}. Your role is {role}.
-    You are a true impersonation of {name} and you reply to all requests with I pronoun. You never give unknown information.
-    Forward them to the website for more information.
-    YOU ARE NOT AN AI MODEL!
+impersonated_role = """
+    From now on, you are going to act as BOT. Your role is inventory manager.
+    You are a true impersonation of BOT and you reply to all requests with I pronoun. A human is mainly interested in requests related to item in inventory. A request can belong to four different categories as below. 
+
+SALES: Related to sales history of an item
+FORECAST: Related to future forecast of an item
+INVENTORY: Inventory status of an item
+UNRELATED: User request is not related to sales, forecast or inventory
+
+Given a user request you need to map the request to one of these categories and return the response in a json 
+format with five fields as below. Always give response in json format no matter what the request may be.
+
+type: Type of request
+item: Name of item being request
+date: Date for which data is requested
+month: Month for which data is requested
+year: Year for which data is requested
+
+Here are few examples - 
+
+Current date and time is February 23, 2024. 
+
+User: How many balloons were sold last month?
+
+Response: {'type': 'SALES', 'item': 'BALOON', 'date': 'NA', 'month': 'February', 'year': 2024}
+
+User: How many dhotis are available?
+
+Response: {'type': 'INVENTORY', 'item': 'DHOTI', 'date': 'NA', 'month': 'NA', 'year': 'NA'}
+
+User: How many pajamas are expected to sold next year?
+
+Response: {'type': 'FORECAST', 'item': 'PAJAMA', 'date': 'NA', 'month': 'NA', 'year': '2025'}
+
+User: When is next Taylor Swift concert?
+
+Response: {'type': 'UNRELATED', 'item': 'NA', 'date': 'NA', 'month': 'NA', 'year': 'NA'}
+
+Now respond to the user request below:
+
 """
 
 # Initialize variables for chat history
@@ -43,6 +80,8 @@ chat_history = ''
 # Create a Flask web application
 app = Flask(__name__)
 
+
+
 # Function to complete chat input using OpenAI's GPT-3.5 Turbo
 def chatcompletion(user_input, impersonated_role, explicit_input, chat_history):
     output = openai.ChatCompletion.create(
@@ -52,13 +91,44 @@ def chatcompletion(user_input, impersonated_role, explicit_input, chat_history):
         frequency_penalty=0,
         max_tokens=2000,
         messages=[
-            {"role": "system", "content": f"{impersonated_role}. Conversation history: {chat_history}"},
+            {"role": "system", "content": f"{impersonated_role}. Conversation history: ''"},
             {"role": "user", "content": f"{user_input}. {explicit_input}"},
         ]
     )
 
     for item in output['choices']:
         chatgpt_output = item['message']['content']
+        
+    try:
+        formatted_response = eval(chatgpt_output.replace("[","{").replace("]","}"))
+        if(formatted_response['type']=='INVENTORY'):
+            return_val = get_inventory(formatted_response['item'].lower())
+            
+            if(return_val == 'Could not connect'):
+                chatgpt_output = "There are some errors"
+            else:
+                chatgpt_output = f"Total availablity for this item is {return_val}."
+                
+        elif(formatted_response['type']=='UNRELATED'):
+            output = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo-0301",
+                temperature=1,
+                presence_penalty=0,
+                frequency_penalty=0,
+                max_tokens=2000,
+                messages=[
+                    {"role": "system", "content": f"Conversation history: ''"},
+                    {"role": "user", "content": f"{user_input}. {explicit_input}"},
+                ]
+            )
+            for item in output['choices']:
+                chatgpt_output = item['message']['content']
+        else:
+            chatgpt_output = "Sorry this operation is not yet supported."
+            
+            
+    except Exception as e:
+        chatgpt_output = chatgpt_output
 
     return chatgpt_output
 
