@@ -14,3 +14,13 @@ Dynamic Forecasting: The core function, predict, dynamically adapts to the user'
 User-Friendly Outputs: The chatbot rounds up the prediction to the nearest whole number, ensuring the forecast is practical and easily interpretable for inventory planning.
 
 This project not only showcases our capability to integrate AI with practical applications but also represents a significant step towards optimizing inventory management, making operations more efficient, and helping businesses plan their inventory needs with unprecedented accuracy.
+## ReadData.py
+Data Cleansing and Standardization: Begin with meticulous preprocessing, focusing on essential columns such as date, SKU, quantity, and category. Standardize date formats and implement a unified date counter for consistent analysis.
+
+Moving Average Computation: Utilize Python to calculate moving averages spanning from 3 to 30 days. Optimize forecasting accuracy by capturing underlying sales trends and patterns.
+
+Model Training and Deployment: Leverage scikit-learn to train a Linear Regression model, predicting future sales based on historical data. Seamlessly deploy the model using joblib, ensuring operational efficiency.
+
+Data Visualization and Reporting: Generate comprehensive reports, including SKU-level order data and item details, providing stakeholders with actionable insights for informed decision-making in inventory planning and management.
+
+Enhanced User Experience: Incorporate random quantity generation to simulate real-world inventory scenarios, enabling robust testing and validation of inventory management strategies.
