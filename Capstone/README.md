@@ -24,3 +24,22 @@ Model Training and Deployment: Leverage scikit-learn to train a Linear Regressio
 Data Visualization and Reporting: Generate comprehensive reports, including SKU-level order data and item details, providing stakeholders with actionable insights for informed decision-making in inventory planning and management.
 
 Enhanced User Experience: Incorporate random quantity generation to simulate real-world inventory scenarios, enabling robust testing and validation of inventory management strategies.
+## dbConnector.py
+
+Title: Empowering Data-Driven Decision-Making in Inventory Management
+
+Unlock the potential of data analytics and machine learning to revolutionize inventory management with these critical functions:
+
+Database Connectivity: Seamlessly connect to your MySQL database using Python's mysql.connector module. Efficiently manage connections, execute queries, and retrieve data with ease.
+
+Inventory Querying: Implement functions to fetch real-time inventory data based on item categories or SKUs. Utilize SQL queries to aggregate and summarize inventory information, enabling informed decision-making.
+
+Date Manipulation: Leverage Python's datetime module to perform date calculations dynamically. Calculate the number of days passed in the current week and determine the date of the upcoming Saturday for precise data analysis.
+
+Machine Learning Model Integration: Integrate trained Linear Regression models for accurate sales forecasting. Utilize joblib to load pre-trained models, enabling quick predictions based on new input data.
+
+Predictive Analytics: Predict future sales trends based on historical data and category-specific insights. Utilize machine learning models to forecast sales volumes for specific items or product categories.
+
+Scalable Solutions: Ensure scalability by designing functions that can handle varying data inputs and adapt to evolving business requirements. Enable seamless integration with existing inventory management systems for enhanced operational efficiency.
+
+Error Handling: Implement robust error-handling mechanisms to manage unexpected scenarios, ensuring uninterrupted functionality and reliability of inventory management processes.
