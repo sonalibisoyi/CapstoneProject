@@ -43,3 +43,17 @@ Predictive Analytics: Predict future sales trends based on historical data and c
 Scalable Solutions: Ensure scalability by designing functions that can handle varying data inputs and adapt to evolving business requirements. Enable seamless integration with existing inventory management systems for enhanced operational efficiency.
 
 Error Handling: Implement robust error-handling mechanisms to manage unexpected scenarios, ensuring uninterrupted functionality and reliability of inventory management processes.
+##App.py
+Chat Interface: Utilizing Flask, the project offers a user-friendly chat interface where inventory managers can interact with the chatbot to obtain insights and perform various inventory-related tasks.
+
+AI-Powered Conversational Agent: The chatbot is equipped with OpenAI's GPT-3.5 Turbo model, enabling it to understand user queries, provide contextually relevant responses, and handle complex conversations with natural language processing capabilities.
+
+Database Connectivity: The chatbot seamlessly connects to MySQL databases using the mysql.connector module, allowing real-time access to inventory data for accurate decision-making.
+
+Inventory Analytics: Users can query the chatbot for inventory-related information such as available quantity, sales history, and future forecasts for specific items or categories.
+
+Predictive Analytics: Leveraging machine learning models, the chatbot can forecast future sales trends and inventory requirements based on historical data, helping inventory managers optimize stock levels and avoid shortages.
+
+Role Impersonation: The chatbot can impersonate the role of an inventory manager, understanding user requests related to sales, forecasting, and inventory status. It categorizes user queries and responds accordingly, ensuring efficient communication.
+
+Dynamic Response Generation: The chatbot dynamically generates responses in JSON format, providing structured information to users and enhancing readability and usability.
