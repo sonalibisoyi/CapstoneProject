@@ -98,7 +98,7 @@ body {
 .messages {
   position: relative;
   list-style: none;
-  padding: 20px 10px 0 10px;
+  padding: 5px 3px 0 3px;
   margin: 0;
   height: 347px;
   overflow: scroll;
@@ -111,8 +111,12 @@ body {
   opacity: 0;
 }
 .messages .message.left .avatar {
-  background-color: #f5886e;
+  background-color: #000000;
   float: left;
+  background-image: url('https://i.ibb.co/CBLZ4PZ/Screenshot-2024-03-16-153945.png');
+  width: 60px;
+  height: 60px;
+  display: inline-block;
 }
 .messages .message.left .text_wrapper {
   background-color: #ffe6cb;
@@ -125,16 +129,6 @@ body {
 .messages .message.left .text {
   color: #c48843;
 }
-.messages .message.left .avatar {
-  float: left;
-  width: 50px;
-  height: 50px;
-  background-image: url('/images/toon.jpg');
-  background-size: cover;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
 .messages .message.right .text_wrapper {
   background-color: #c7eafc;
   margin-right: 20px;
@@ -150,22 +144,17 @@ body {
 .messages .message.appeared {
   opacity: 1;
 }
-.messages .message .avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: inline-block;
-}
+
 .messages .message .text_wrapper {
   display: inline-block;
-  padding: 20px;
-  border-radius: 6px;
+  padding: 10px;
+  border-radius: 3px;
   width: calc(100% - 85px);
   min-width: 100px;
   position: relative;
 }
 .messages .message .text_wrapper::after, .messages .message .text_wrapper:before {
-  top: 18px;
+  top: 8px;
   border: solid transparent;
   content: " ";
   height: 0;
@@ -183,14 +172,14 @@ body {
 }
 .messages .message .text_wrapper .text {
   font-size: 18px;
-  font-weight: 300;
+  font-weight: bold;
 }
 
 .bottom_wrapper {
   position: relative;
   width: 100%;
   background-color: #fff;
-  padding: 20px 20px;
+  padding: 5px 5px;
   position: absolute;
   bottom: 0;
 }
@@ -198,7 +187,7 @@ body {
   display: inline-block;
   height: 50px;
   border-radius: 25px;
-  border: 1px solid #bcbdc0;
+  border: 2px solid #bcbdc0;
   width: calc(100% - 160px);
   position: relative;
   padding: 0 20px;
@@ -242,7 +231,7 @@ body {
 
 .footer #button{
 	width:55px;
-	height:55px;
+	height:30px;
 	border: #4e919c 12px solid;
 	border-radius:35px;
 	margin:0 auto;
@@ -255,7 +244,7 @@ body {
 }
 .footer #button:hover{
 	width:55px;
-	height:55px;
+	height:65px;
 	border: #3A3A3A 12px solid;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -317,7 +306,7 @@ height:100%;
 	margin-left:10px;
 }
  </style>
-
+   
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -329,8 +318,8 @@ height:100%;
 <div class="chat_window">
 
     <div class="top_menu">
-        <div class="title">Customer Service:</div>
-    </div>
+    <div class="title"><b style="color: green;">Inventory Management Chatbot</b></div>
+</div>
     <ul class="messages"></ul>
     <div class="bottom_wrapper clearfix">
         <div class="message_input_wrapper">
