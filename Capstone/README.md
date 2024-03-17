@@ -59,3 +59,4 @@ Role Impersonation: The chatbot can impersonate the role of an inventory manager
 Dynamic Response Generation: The chatbot dynamically generates responses in JSON format, providing structured information to users and enhancing readability and usability.
 
 <img width="454" alt="Screenshot 2024-03-17 105433" src="https://github.com/sonalibisoyi/CapstoneProject/assets/69918992/c08e2d01-d2b4-49c1-8cbb-650f7229ed15">
+<img width="590" alt="Screenshot 2024-03-17 105748" src="https://github.com/sonalibisoyi/CapstoneProject/assets/69918992/9f4181e4-4a4e-4d27-934e-0534690338e7">
