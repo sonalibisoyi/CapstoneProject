@@ -57,3 +57,5 @@ Predictive Analytics: Leveraging machine learning models, the chatbot can foreca
 Role Impersonation: The chatbot can impersonate the role of an inventory manager, understanding user requests related to sales, forecasting, and inventory status. It categorizes user queries and responds accordingly, ensuring efficient communication.
 
 Dynamic Response Generation: The chatbot dynamically generates responses in JSON format, providing structured information to users and enhancing readability and usability.
+
+<img width="454" alt="Screenshot 2024-03-17 105433" src="https://github.com/sonalibisoyi/CapstoneProject/assets/69918992/c08e2d01-d2b4-49c1-8cbb-650f7229ed15">
