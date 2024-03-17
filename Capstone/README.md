@@ -1,90 +1,59 @@
-# Flask-OpenAI-Chatbot
-A Flask chatbot application that can impersonate characters and is powered by OpenAI's GPT-3.5 Turbo. This chatbot allows users to interact with different characters, each with their unique backgrounds and personalities. Additionally, it features a user-friendly chatbot UI written in HTML.
+# Inventory Management Chatbot
+A Flask chatbot application powered by OpenAI's GPT-3.5 Turbo APIs, bridges the gap between complex data analysis and user-friendly interaction. It supports queries on inventory levels, sales forecasts, and more, directly integrating with our database. Integrating linear regression forecasting methods. Additionally, it features a user-friendly chatbot UI written in HTML.
+## Forecast.py
+The approach integrates two sophisticated linear regression models, trained to predict future sales based on historical data. One model focuses on item-level predictions, while the other specializes in category-level forecasts, allowing for tailored insights depending on the granularity required.
 
-![Python Version](https://img.shields.io/badge/Python-3.7%20%7C%203.8%20%7C%203.9-blue)
-![Flask Version](https://img.shields.io/badge/Flask-2.0.1-green)
-![OpenAI GPT Version](https://img.shields.io/badge/OpenAI%20GPT-3.5%20Turbo-yellow)
+Here's a breakdown of how the system operates:
 
+Model Loading: The LinearRegression algorithm from scikit-learn and use joblib to load our pre-trained models—one for items (linear_regression_model.pkl) and another for categories (linear_regression_model_category.pkl).
 
-## Features
+Data Handling: Chatbot can predict future sales for both individual items and broader categories. Depending on the user's query, it fetches historical sales data and uses it to make informed predictions.
 
-- Impersonate various characters with distinct backgrounds and personalities.
-- Utilize OpenAI's GPT-3.5 Turbo for intelligent responses.
-- User-friendly chatbot interface built with HTML and Flask.
-- Store chat history for each character in separate text files.
-- Easy-to-define character profiles.
+Dynamic Forecasting: The core function, predict, dynamically adapts to the user's request—whether for a specific item or a category. It processes the input, retrieves relevant historical data, and applies the appropriate model to predict next week's sales.
 
-## Getting Started
+User-Friendly Outputs: The chatbot rounds up the prediction to the nearest whole number, ensuring the forecast is practical and easily interpretable for inventory planning.
 
-### Prerequisites
+This project not only showcases our capability to integrate AI with practical applications but also represents a significant step towards optimizing inventory management, making operations more efficient, and helping businesses plan their inventory needs with unprecedented accuracy.
+## ReadData.py
+Data Cleansing and Standardization: Begin with meticulous preprocessing, focusing on essential columns such as date, SKU, quantity, and category. Standardize date formats and implement a unified date counter for consistent analysis.
 
-- Python 3.7+ installed on your system.
-- Flask 2.0.1 and OpenAI Python SDK installed.
-- Set up your OpenAI API key.
+Moving Average Computation: Utilize Python to calculate moving averages spanning from 3 to 30 days. Optimize forecasting accuracy by capturing underlying sales trends and patterns.
 
-### Installation
+Model Training and Deployment: Leverage scikit-learn to train a Linear Regression model, predicting future sales based on historical data. Seamlessly deploy the model using joblib, ensuring operational efficiency.
 
-1. Clone this repository to your local machine:
+Data Visualization and Reporting: Generate comprehensive reports, including SKU-level order data and item details, providing stakeholders with actionable insights for informed decision-making in inventory planning and management.
 
-   ```bash
-   git clone https://github.com/batuhantoker/Flask-OpenAI-Chatbot.git
-    ```
+Enhanced User Experience: Incorporate random quantity generation to simulate real-world inventory scenarios, enabling robust testing and validation of inventory management strategies.
+## dbConnector.py
 
-2. 2. Navigate to the project directory:https://github.com/batuhantoker/Flask-OpenAI-Chatbot
-```bash
-cd multi-character-chatbot
-```
-3. Install the required Python packages:
-```bash
-pip install -r requirements.txt
-```
-This command will install all the necessary Python packages and dependencies required for your chatbot application.
+Title: Empowering Data-Driven Decision-Making in Inventory Management
 
-4. Configure your OpenAI API key:
-In order to use OpenAI's GPT-3.5 Turbo for intelligent responses in your chatbot, you'll need to configure your OpenAI API key in the app.py file. Follow these steps:
+Unlock the potential of data analytics and machine learning to revolutionize inventory management with these critical functions:
 
-a. Open app.py in a text editor or code editor of your choice.
-```bash
-nano app.py  # or use your preferred code editor
-```
-b. Locate the following line in app.py:
-```python
-openai.api_key = "your-api-key"
-```
-c. Replace "your-api-key" with your actual OpenAI API key. It should look something like this:
-```python
-openai.api_key = "sk-zqn9OVmS71IvKsg10nFiTsgRykFJxlMij3WPbmeegvhzPB2p"
-```
-d. Configure your bot
-```python
-# Define the role of the bot
-role = ‘customer service’
+Database Connectivity: Seamlessly connect to your MySQL database using Python's mysql.connector module. Efficiently manage connections, execute queries, and retrieve data with ease.
 
-# Define the impersonated role with instructions
-impersonated_role = f"""
-    From now on, you are going to act as {name}. Your role is {role}.
-    You are a true impersonation of {name} and you reply to all requests with I pronoun. You never give unknown information.
-    Forward them to the website for more information.
-    YOU ARE NOT AN AI MODEL!
-"""
-```
-e. Save the changes to the app.py file and exit the text editor.
-With these steps completed, your chatbot application is now set up to use OpenAI's GPT-3.5 Turbo and is ready to be launched.
+Inventory Querying: Implement functions to fetch real-time inventory data based on item categories or SKUs. Utilize SQL queries to aggregate and summarize inventory information, enabling informed decision-making.
 
-5. Usage
-Now that you've completed the setup, you can use your Chatbot App:
+Date Manipulation: Leverage Python's datetime module to perform date calculations dynamically. Calculate the number of days passed in the current week and determine the date of the upcoming Saturday for precise data analysis.
 
-![Screenshot 2023-10-03 at 19 32 54](https://github.com/batuhantoker/Flask-OpenAI-Chatbot/assets/55883119/acda595c-22b8-40d9-9dc3-2208b181d42a)
+Machine Learning Model Integration: Integrate trained Linear Regression models for accurate sales forecasting. Utilize joblib to load pre-trained models, enabling quick predictions based on new input data.
 
-a. Start the Flask app:
-```bash
-python app.py
-```
-b. Open your web browser and go to http://localhost:5000 to interact with the chatbot.
+Predictive Analytics: Predict future sales trends based on historical data and category-specific insights. Utilize machine learning models to forecast sales volumes for specific items or product categories.
 
-c. Choose a character to impersonate from the character selection menu.
+Scalable Solutions: Ensure scalability by designing functions that can handle varying data inputs and adapt to evolving business requirements. Enable seamless integration with existing inventory management systems for enhanced operational efficiency.
 
-d. Engage in conversations with the chatbot and experience different personalities and backgrounds.
+Error Handling: Implement robust error-handling mechanisms to manage unexpected scenarios, ensuring uninterrupted functionality and reliability of inventory management processes.
+## App.py
+Chat Interface: Utilizing Flask, the project offers a user-friendly chat interface where inventory managers can interact with the chatbot to obtain insights and perform various inventory-related tasks.
 
-Your chatbot app is now fully configured and ready for use. You can customize character profiles and the chatbot UI as needed to create engaging and interactive conversations.
+AI-Powered Conversational Agent: The chatbot is equipped with OpenAI's GPT-3.5 Turbo model, enabling it to understand user queries, provide contextually relevant responses, and handle complex conversations with natural language processing capabilities.
 
+Database Connectivity: The chatbot seamlessly connects to MySQL databases using the mysql.connector module, allowing real-time access to inventory data for accurate decision-making.
+
+Inventory Analytics: Users can query the chatbot for inventory-related information such as available quantity, sales history, and future forecasts for specific items or categories.
+
+Predictive Analytics: Leveraging machine learning models, the chatbot can forecast future sales trends and inventory requirements based on historical data, helping inventory managers optimize stock levels and avoid shortages.
+
+Role Impersonation: The chatbot can impersonate the role of an inventory manager, understanding user requests related to sales, forecasting, and inventory status. It categorizes user queries and responds accordingly, ensuring efficient communication.
+
+Dynamic Response Generation: The chatbot dynamically generates responses in JSON format, providing structured information to users and enhancing readability and usability.
