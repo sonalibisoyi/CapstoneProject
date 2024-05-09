@@ -11,7 +11,6 @@ loaded_model_category = joblib.load('linear_regression_model_category.pkl')
 # Make predictions with the loaded model
 
 def predict(text, type_of_search, type_of_week):
-    print("Came here else")
     if(type_of_search == 'category'):
         category = get_category(text)
         weekly_count = get_week_data(category, type_of_search, type_of_week)
